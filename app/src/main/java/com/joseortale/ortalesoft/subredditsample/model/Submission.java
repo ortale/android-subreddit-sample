@@ -1,5 +1,6 @@
 package com.joseortale.ortalesoft.subredditsample.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,9 +10,11 @@ import com.google.gson.annotations.SerializedName;
 
 @Entity
 public class Submission {
+    @SerializedName("id")
     @Expose
-    @PrimaryKey(autoGenerate = true)
-    private Integer id;
+    @PrimaryKey
+    @NonNull
+    private String id;
 
     @SerializedName("author_fullname")
     @Expose
@@ -28,11 +31,11 @@ public class Submission {
     @ColumnInfo(name = "url")
     private String url;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
