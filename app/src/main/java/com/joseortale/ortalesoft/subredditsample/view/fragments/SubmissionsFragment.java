@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +33,7 @@ public class SubmissionsFragment extends Fragment {
     private RecyclerView rvSubmissions;
     private SubmissionsViewModel submissionsViewModel;
     private LinearLayoutManager layoutManager;
+    private ProgressBar progressCircular;
 
     public static SubmissionsFragment newInstance() {
         SubmissionsFragment fragment = new SubmissionsFragment();
@@ -58,6 +60,7 @@ public class SubmissionsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_submissions, container, false);
 
         rvSubmissions = view.findViewById(R.id.rv_submissions);
+        progressCircular = view.findViewById(R.id.progress_circular);
 
         layoutManager = new LinearLayoutManager(context);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvSubmissions.getContext(), layoutManager.getOrientation());
@@ -65,8 +68,9 @@ public class SubmissionsFragment extends Fragment {
 
         submissionsViewModel = ViewModelProviders.of(this).get(SubmissionsViewModel.class);
         submissionsViewModel.init(context);
-        submissionsViewModel.getSubmissionsRepository().observe(this, albumArrayList -> {
-            this.submissionArrayList = albumArrayList;
+        submissionsViewModel.getSubmissionsRepository().observe(this, submissionArrayList -> {
+            progressCircular.setVisibility(View.GONE);
+            this.submissionArrayList = submissionArrayList;
             refreshRecyclerView();
         });
 
