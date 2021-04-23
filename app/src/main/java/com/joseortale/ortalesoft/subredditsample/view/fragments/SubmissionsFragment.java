@@ -34,6 +34,7 @@ public class SubmissionsFragment extends Fragment {
     private SubmissionsViewModel submissionsViewModel;
     private LinearLayoutManager layoutManager;
     private ProgressBar progressCircular;
+    private boolean isLoading = false;
 
     public static SubmissionsFragment newInstance() {
         SubmissionsFragment fragment = new SubmissionsFragment();
@@ -75,8 +76,34 @@ public class SubmissionsFragment extends Fragment {
         });
 
         refreshRecyclerView();
+        initScrollListener();
 
         return view;
+    }
+
+    private void initScrollListener() {
+        rvSubmissions.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView rvSubmissions, int newState) {
+                super.onScrollStateChanged(rvSubmissions, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView rvSubmissions, int dx, int dy) {
+                super.onScrolled(rvSubmissions, dx, dy);
+
+                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) rvSubmissions.getLayoutManager();
+
+                if (linearLayoutManager != null && linearLayoutManager.findLastCompletelyVisibleItemPosition() == submissionArrayList.size() - 1) {
+                    submissionsViewModel.getAllSubmissionsByPage(context, submissionArrayList.get(submissionArrayList.size()-1).getAfter());
+                    submissionsViewModel.getSubmissionsRepository().observe(SubmissionsFragment.this, submissionArrayListt -> {
+                        SubmissionsFragment.this.submissionArrayList = submissionArrayListt;
+                        refreshRecyclerView();
+                    });
+                    isLoading = true;
+                }
+            }
+        });
     }
 
     private void refreshRecyclerView() {

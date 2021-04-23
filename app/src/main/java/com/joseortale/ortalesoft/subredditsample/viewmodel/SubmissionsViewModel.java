@@ -16,12 +16,13 @@ public class SubmissionsViewModel extends ViewModel {
     private SubmissionsRepository submissionsRepository;
 
     public void init(Context context) {
-        if (mutableLiveData != null) {
-            return;
-        }
-
         submissionsRepository = SubmissionsRepository.getInstance(context);
         mutableLiveData = submissionsRepository.getAllSubmissions();
+    }
+
+    public void getAllSubmissionsByPage(Context context, String page) {
+        submissionsRepository = SubmissionsRepository.getInstance(context);
+        mutableLiveData = submissionsRepository.getAllSubmissionsByPage(page);
     }
 
     public LiveData<List<Submission>> getSubmissionsRepository() {

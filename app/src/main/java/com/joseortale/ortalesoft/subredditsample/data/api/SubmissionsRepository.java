@@ -80,6 +80,7 @@ public class SubmissionsRepository {
 
                         submissions = new ArrayList<>();
                         for (Children children : childrenList) {
+                            children.getSubmission().setAfter(apiResponse.getResponseData().getAfter());
                             submissions.add(children.getSubmission());
                         }
 
@@ -123,6 +124,7 @@ public class SubmissionsRepository {
 
                         submissions = new ArrayList<>();
                         for (Children children : childrenList) {
+                            children.getSubmission().setAfter(apiResponse.getResponseData().getAfter());
                             submissions.add(children.getSubmission());
                         }
 

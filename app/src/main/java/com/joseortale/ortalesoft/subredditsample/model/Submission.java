@@ -31,6 +31,10 @@ public class Submission {
     @ColumnInfo(name = "url")
     private String url;
 
+    @Expose
+    @ColumnInfo(name = "after")
+    private String after;
+
     public String getId() {
         return id;
     }
@@ -61,5 +65,13 @@ public class Submission {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getAfter() {
+        return after;
+    }
+
+    public void setAfter(String after) {
+        this.after = after;
     }
 }
