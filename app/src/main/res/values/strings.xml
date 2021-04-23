@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Subreddit Sample</string>
+
+    <string name="label_title">Title:</string>
+    <string name="label_author">Author:</string>
+    <string name="placeholder">PLACEHOLDER</string>
 </resources>
