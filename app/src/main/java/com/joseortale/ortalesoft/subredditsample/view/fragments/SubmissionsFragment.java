@@ -34,7 +34,6 @@ public class SubmissionsFragment extends Fragment {
     private SubmissionsViewModel submissionsViewModel;
     private LinearLayoutManager layoutManager;
     private ProgressBar progressCircular;
-    private boolean isLoading = false;
 
     public static SubmissionsFragment newInstance() {
         SubmissionsFragment fragment = new SubmissionsFragment();
@@ -100,7 +99,6 @@ public class SubmissionsFragment extends Fragment {
                         SubmissionsFragment.this.submissionArrayList = submissionArrayListt;
                         refreshRecyclerView();
                     });
-                    isLoading = true;
                 }
             }
         });
