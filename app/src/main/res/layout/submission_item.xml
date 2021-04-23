@@ -7,28 +7,31 @@
 
     <LinearLayout
         android:padding="@dimen/padding_default"
+        android:layout_weight="1"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="@string/label_author"
+            android:text="@string/label_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="@dimen/text_small" />
+            android:textSize="@dimen/text_big" />
 
         <TextView
             android:id="@+id/tv_title"
             android:text="@string/placeholder"
-            android:padding="@dimen/padding_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_marginStart="@dimen/margin_default"
             android:textColor="@color/black"
             android:textSize="@dimen/text_big" />
     </LinearLayout>
 
     <LinearLayout
         android:padding="@dimen/padding_default"
+        android:layout_weight="1"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -42,6 +45,8 @@
         <TextView
             android:id="@+id/tv_author_name"
             android:text="@string/placeholder"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:layout_marginStart="@dimen/margin_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
